@@ -1,16 +1,19 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { useAuth } from '@/lib/auth';
-import { Search, LogOut } from 'lucide-react';
+import { useState } from "react";
+import Link from "next/link";
+import { useAuth } from "@/lib/auth";
+import { Search, LogOut } from "lucide-react";
 
 interface DashboardHeaderProps {
   onSearch: (query: string) => void;
   searchQuery: string;
 }
 
-export default function DashboardHeader({ onSearch, searchQuery }: DashboardHeaderProps) {
+export default function DashboardHeader({
+  onSearch,
+  searchQuery,
+}: DashboardHeaderProps) {
   const { user, signOut } = useAuth();
   const [mobileSearchVisible, setMobileSearchVisible] = useState(false);
 
@@ -21,7 +24,7 @@ export default function DashboardHeader({ onSearch, searchQuery }: DashboardHead
   const toggleMobileSearch = () => {
     setMobileSearchVisible(!mobileSearchVisible);
     if (!mobileSearchVisible) {
-      onSearch('');
+      onSearch("");
     }
   };
 
@@ -30,7 +33,10 @@ export default function DashboardHeader({ onSearch, searchQuery }: DashboardHead
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link href="/dashboard" className="text-xl font-bold text-black dark:text-white">
+            <Link
+              href="/dashboard"
+              className="text-xl font-bold text-black dark:text-white"
+            >
               AI Notes
             </Link>
           </div>
@@ -47,7 +53,7 @@ export default function DashboardHeader({ onSearch, searchQuery }: DashboardHead
                 <Search className="h-4 w-4 text-stone-400" />
               </div>
             </div>
-            <button 
+            <button
               className="sm:hidden p-2 rounded-md text-stone-500 hover:bg-stone-100 dark:hover:bg-stone-900"
               onClick={toggleMobileSearch}
               aria-label="Toggle search"
@@ -67,7 +73,7 @@ export default function DashboardHeader({ onSearch, searchQuery }: DashboardHead
             </button>
           </div>
         </div>
-        
+
         {/* Mobile search */}
         {mobileSearchVisible && (
           <div className="pb-3 px-2 sm:hidden">
@@ -80,10 +86,10 @@ export default function DashboardHeader({ onSearch, searchQuery }: DashboardHead
                 className="w-full px-4 py-2 pr-10 rounded-md bg-stone-100 dark:bg-stone-900 border-transparent focus:border-stone-300 dark:focus:border-stone-700 focus:bg-white dark:focus:bg-black focus:ring-0 text-sm"
                 autoFocus
               />
-              <button 
+              <button
                 className="absolute inset-y-0 right-0 flex items-center pr-3"
                 onClick={() => {
-                  onSearch('');
+                  onSearch("");
                   setMobileSearchVisible(false);
                 }}
               >

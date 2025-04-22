@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { useAuth } from '@/lib/auth';
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { FileText, Sparkles, Globe, ArrowRight } from 'lucide-react';
-import Header from '@/components/Header';
+import { useAuth } from "@/lib/auth";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { FileText, Sparkles, Globe, ArrowRight } from "lucide-react";
+import Header from "@/components/Header";
 
 export default function Home() {
   const { user, isLoading } = useAuth();
@@ -14,7 +14,7 @@ export default function Home() {
 
   useEffect(() => {
     if (!isLoading && user) {
-      router.push('/dashboard');
+      router.push("/dashboard");
     }
   }, [user, isLoading, router]);
 
@@ -33,7 +33,8 @@ export default function Home() {
                   Smart Note-Taking with AI
                 </h1>
                 <p className="mt-4 sm:mt-6 text-lg sm:text-xl text-stone-600 dark:text-stone-400">
-                  Supercharge your productivity with AI-powered note summarization and organization.
+                  Supercharge your productivity with AI-powered note
+                  summarization and organization.
                 </p>
                 <div className="mt-8 sm:mt-10">
                   <Link
@@ -45,7 +46,7 @@ export default function Home() {
                   </Link>
                 </div>
               </div>
-              
+
               {/* Note Card Preview */}
               <div className="md:w-2/5 mt-8 md:mt-0">
                 <div className="bg-white dark:bg-black shadow-lg rounded-lg overflow-hidden border border-stone-200 dark:border-stone-800">
@@ -59,7 +60,8 @@ export default function Home() {
                       </span>
                     </div>
                     <p className="text-sm text-stone-600 dark:text-stone-400">
-                      Today we discussed the new product launch strategy. Key points:
+                      Today we discussed the new product launch strategy. Key
+                      points:
                       <br />- Launch timeline: June 15th
                       <br />- Marketing campaign to start May 20th
                       <br />- Budget allocation finalized
@@ -84,7 +86,9 @@ export default function Home() {
         {/* Features Section */}
         <section className="py-12 sm:py-16 bg-white dark:bg-black border-t border-stone-200 dark:border-stone-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-black dark:text-white">Features</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-black dark:text-white">
+              Features
+            </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {/* Feature 1 */}
               <div className="bg-stone-50 dark:bg-stone-900 p-5 sm:p-6 rounded-lg shadow-sm hover:shadow transition-all border border-stone-200 dark:border-stone-800">
@@ -97,10 +101,11 @@ export default function Home() {
                   Take Smart Notes
                 </h3>
                 <p className="mt-3 text-stone-600 dark:text-stone-400 text-center">
-                  Capture your thoughts, ideas, and important information in an organized way.
+                  Capture your thoughts, ideas, and important information in an
+                  organized way.
                 </p>
               </div>
-              
+
               {/* Feature 2 */}
               <div className="bg-stone-50 dark:bg-stone-900 p-5 sm:p-6 rounded-lg shadow-sm hover:shadow transition-all border border-stone-200 dark:border-stone-800">
                 <div className="flex justify-center mb-4">
@@ -112,10 +117,11 @@ export default function Home() {
                   AI-Powered Summaries
                 </h3>
                 <p className="mt-3 text-stone-600 dark:text-stone-400 text-center">
-                  Get automatic summarization of your notes, saving you time and enhancing productivity.
+                  Get automatic summarization of your notes, saving you time and
+                  enhancing productivity.
                 </p>
               </div>
-              
+
               {/* Feature 3 */}
               <div className="bg-stone-50 dark:bg-stone-900 p-5 sm:p-6 rounded-lg shadow-sm hover:shadow transition-all border border-stone-200 dark:border-stone-800 sm:col-span-2 lg:col-span-1 mx-auto lg:mx-0 w-full sm:w-1/2 lg:w-full">
                 <div className="flex justify-center mb-4">
@@ -127,7 +133,8 @@ export default function Home() {
                   Access Anywhere
                 </h3>
                 <p className="mt-3 text-stone-600 dark:text-stone-400 text-center">
-                  Your notes are securely stored in the cloud, accessible from any device, anywhere.
+                  Your notes are securely stored in the cloud, accessible from
+                  any device, anywhere.
                 </p>
               </div>
             </div>
@@ -137,9 +144,12 @@ export default function Home() {
         {/* CTA Section */}
         <section className="py-12 sm:py-16 bg-stone-50 dark:bg-stone-950 border-t border-stone-200 dark:border-stone-800">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-black dark:text-white">Ready to get started?</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-black dark:text-white">
+              Ready to get started?
+            </h2>
             <p className="text-lg sm:text-xl text-stone-600 dark:text-stone-400 mb-8 sm:mb-10">
-              Join thousands of users already enhancing their productivity with AI Notes.
+              Join thousands of users already enhancing their productivity with
+              AI Notes.
             </p>
             <Link
               href="/signup"

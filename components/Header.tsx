@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { useAuth } from '@/lib/auth';
-import { LogOut, Menu, X } from 'lucide-react';
+import { useState } from "react";
+import Link from "next/link";
+import { useAuth } from "@/lib/auth";
+import { LogOut, Menu, X } from "lucide-react";
 
 interface HeaderProps {
   showAuthButtons?: boolean;
@@ -23,7 +23,10 @@ export default function Header({ showAuthButtons = true }: HeaderProps) {
         <div className="flex justify-between items-center">
           {/* Logo - Always visible */}
           <div className="flex items-center space-x-2">
-            <Link href={user ? '/dashboard' : '/'} className="text-xl sm:text-2xl font-bold text-black dark:text-white">
+            <Link
+              href={user ? "/dashboard" : "/"}
+              className="text-xl sm:text-2xl font-bold text-black dark:text-white"
+            >
               AI Notes
             </Link>
           </div>
@@ -44,21 +47,23 @@ export default function Header({ showAuthButtons = true }: HeaderProps) {
                   <span>Sign Out</span>
                 </button>
               </div>
-            ) : showAuthButtons && (
-              <>
-                <Link
-                  href="/login"
-                  className="px-4 py-2 text-sm font-medium text-stone-700 dark:text-stone-300 hover:text-black dark:hover:text-white border border-stone-300 dark:border-stone-700 hover:border-stone-400 dark:hover:border-stone-600 rounded-md transition-colors"
-                >
-                  Log in
-                </Link>
-                <Link
-                  href="/signup"
-                  className="px-4 py-2 text-sm font-medium text-white bg-stone-800 hover:bg-stone-700 rounded-md transition-colors"
-                >
-                  Sign up
-                </Link>
-              </>
+            ) : (
+              showAuthButtons && (
+                <>
+                  <Link
+                    href="/login"
+                    className="px-4 py-2 text-sm font-medium text-stone-700 dark:text-stone-300 hover:text-black dark:hover:text-white border border-stone-300 dark:border-stone-700 hover:border-stone-400 dark:hover:border-stone-600 rounded-md transition-colors"
+                  >
+                    Log in
+                  </Link>
+                  <Link
+                    href="/signup"
+                    className="px-4 py-2 text-sm font-medium text-white bg-stone-800 hover:bg-stone-700 rounded-md transition-colors"
+                  >
+                    Sign up
+                  </Link>
+                </>
+              )
             )}
           </div>
 
@@ -93,23 +98,25 @@ export default function Header({ showAuthButtons = true }: HeaderProps) {
                     Sign Out
                   </button>
                 </>
-              ) : showAuthButtons && (
-                <>
-                  <Link
-                    href="/login"
-                    className="px-4 py-3 text-center text-sm font-medium text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-900 hover:text-black dark:hover:text-white rounded-md transition-colors"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Log in
-                  </Link>
-                  <Link
-                    href="/signup"
-                    className="px-4 py-3 text-center text-sm font-medium text-white bg-stone-800 hover:bg-stone-700 rounded-md transition-colors"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Sign up
-                  </Link>
-                </>
+              ) : (
+                showAuthButtons && (
+                  <>
+                    <Link
+                      href="/login"
+                      className="px-4 py-3 text-center text-sm font-medium text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-900 hover:text-black dark:hover:text-white rounded-md transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Log in
+                    </Link>
+                    <Link
+                      href="/signup"
+                      className="px-4 py-3 text-center text-sm font-medium text-white bg-stone-800 hover:bg-stone-700 rounded-md transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Sign up
+                    </Link>
+                  </>
+                )
               )}
             </div>
           </div>
