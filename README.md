@@ -1,8 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Notes
+
+A smart note-taking application powered by AI that helps you create, manage, and summarize your notes using Google's Gemini AI.
+
+## Features
+
+- **AI-powered Summaries**: Automatically generate concise summaries of your notes using Google's Gemini AI
+- **Authentication**: Secure user authentication powered by Supabase
+- **Responsive Design**: Modern UI built with Next.js, Tailwind CSS, and shadcn/ui components
+- **Markdown Support**: Write and view notes in Markdown format
+
+## Technologies Used
+
+- **Frontend**: Next.js 15, React 19, TypeScript
+- **Styling**: Tailwind CSS, shadcn/ui
+- **Authentication**: Supabase Auth
+- **Database**: Supabase 
+- **AI Integration**: Google Generative AI (Gemini 2.0)
+- **State Management**: Zustand, React Query
+- **Form Handling**: React Hook Form, Zod
+
+## Prerequisites
+
+Before you begin, ensure you have:
+
+- Node.js (v18 or newer)
+- npm or yarn or pnpm or bun
+- Supabase account
+- Google AI Studio API key (for Gemini)
+
+## Environment Variables
+
+Create a `.env.local` file in the root directory with the following variables:
+
+```
+# Supabase Configuration
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+
+# Google Generative AI
+NEXT_PUBLIC_GOOGLE_GENERATIVE_AI_API_KEY=your_gemini_api_key
+```
+
+## Database Setup
+
+Set up the following tables in your Supabase dashboard:
+
+1. **notes** table with columns:
+   - id (uuid, primary key)
+   - user_id (uuid, foreign key to auth.users)
+   - title (text)
+   - content (text)
+   - summary (text, nullable)
+   - created_at (timestamp with timezone)
+   - updated_at (timestamp with timezone)
+
+2. Set up appropriate RLS (Row Level Security) policies to ensure users can only access their own notes.
 
 ## Getting Started
 
-First, run the development server:
+First, install the dependencies:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
@@ -14,23 +82,32 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/                  # Next.js App Router
+  auth/               # Authentication routes
+  dashboard/          # User dashboard 
+  login/              # Login page
+  signup/             # Signup page
+components/           # Reusable UI components
+lib/                  # Shared utilities
+  gemini.ts           # Google Generative AI integration
+  supabase.ts         # Supabase client
+  note-queries.ts     # React Query hooks for notes
+```
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+You can deploy this application to Vercel or any other hosting platform that supports Next.js.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build
+npm start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[MIT](https://choosealicense.com/licenses/mit/)
